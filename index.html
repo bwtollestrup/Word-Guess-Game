@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Harry Potter Hangman</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="Assets/CSS/reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="Assets/CSS/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+            <img src="../Word-Guess-Game/Assets/Images/Hogwarts1.jpg" height="300">
+        </h1>
+        <hr>
+        <div class="card" style="width: 100%">
+            <div class="card-body">
+                <h5 class="card-title">Word to Guess:</h5>
+                <p class="card-text">
+                    <h6>
+                        <span id="wordToGuess">_ _ _ _ _ _ _ _ _ _ _ _ _</span>
+                    </h6>
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="card" style="width: 100%">
+            <div class="card-body">
+                <h5 class="card-title">Letters Guessed:</h5>
+                <p class="card-text">
+                    <span id="lettersGuesse"> </span>
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 100%">
+                    <div class="card-body">
+                        <h5 class="card-title">Guesses Remaining:</h5>
+                        <p class="card-text">
+                            <span id="guessesRemaining"> </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 100%">
+                    <div class="card-body">
+                        <h5 class="card-title"># of Wins:</h5>
+                        <p class="card-text">
+                            <span id="winCounter"> </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 100%">
+                    <div class="card-body">
+                        <h5 class="card-title"># of Losses:</h5>
+                        <p class="card-text">
+                            <span id="lossCounter"> </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="Assets/Javascript/game.js"></script>
+</body>
+
+</html>
