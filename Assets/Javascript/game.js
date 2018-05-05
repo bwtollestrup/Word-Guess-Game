@@ -5,7 +5,7 @@ var wordOptions = ["harry", "hermonie", "ron", "dumbledore", "hagrid", "dobby", 
 var selectedWord = "";
 var lettersInWord = [];
 var blanks = 0;
-var blanksAndSuccess = [];
+var blanksAndSuccesses = [];
 var wrongLetters = [];
 
 
@@ -13,7 +13,7 @@ var wrongLetters = [];
 console.log(wordOptions);
 console.log(lettersInWord);
 console.log(blanks);
-console.log(blanksAndSuccess);
+console.log(blanksAndSuccesses);
 console.log(wrongLetters);
 
 //Game Counters
@@ -36,13 +36,13 @@ function startGame() {
     //Reset
     guessesRemaining = 10;
     wrongLetters = [];
-    blanksAndSuccess = [];
+    blanksAndSuccesses = [];
 
     for (var i = 0; i < blanks; i++) {
-        blanksAndSuccess.push("_");
+        blanksAndSuccesses.push("_");
     }
 
-    document.getElementById("wordToGuess").innerHTML = blanksAndSuccess.join("   ");
+    document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join("   ");
     document.getElementById("guessesRemaining").innerHTML = guessesRemaining;
     document.getElementById("winCounter").innerHTML = winCount;
     document.getElementById("lossCounter").innerHTML = lossCount;
@@ -51,7 +51,7 @@ function startGame() {
     console.log(selectedWord);
     console.log(lettersInWord);
     console.log(blanks);
-    console.log(blanksAndSuccess);
+    console.log(blanksAndSuccesses);
 }
 
 function checkLetters(letter) {
@@ -61,7 +61,7 @@ function checkLetters(letter) {
 
     for (var i = 0; i < blanks; i++) {
         if (selectedWord[i] === letter) {
-            isLetterinWord == true;
+            isLetterinWord = true;
         }
     }
 
@@ -70,7 +70,7 @@ function checkLetters(letter) {
     if (isLetterinWord) {
         for (var i = 0; i < blanks; i++) {
             if (selectedWord[i] === letter) {
-                blanksAndSuccess[i] == letter;
+                blanksAndSuccesses[i] = letter;
             }
         }
     }
@@ -81,27 +81,31 @@ function checkLetters(letter) {
     }
 
     //testing
-    console.log(blanksAndSuccess);
+    console.log(blanksAndSuccesses);
 }
 
 function roundComplete() {
     console.log("Win Count: " + winCount + " | Loss Count: " + lossCount + " | Remaining Guesses: " + guessesRemaining);
     // Update HTML
     document.getElementById("guessesRemaining").innerHTML = guessesRemaining;
-    document.getElementById("wordToGuess").innerHTML = blanksAndSuccess.join(" ");
+    document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById("lettersGuess").innerHTML = wrongLetters.join(" ");
 
     // check if user won
-    if (lettersInWord.toString() === blanksAndSuccess.toString()) {
+    if (lettersInWord.toString() === blanksAndSuccesses.toString()) {
         winCount++;
-        alert("You're a Wizard Harry!")
+
+        setTimeout( function() {
+            alert("You're a Wizard Harry!")
+            startGame();
+        }, 0)
 
         //update counters in HTML
         document.getElementById("winCounter").innerHTML = winCount;
 
-        startGame();
     }
     // check if user lost
-    else if (guessesRemaining == 0) {
+    else if (guessesRemaining === 0) {
         lossCount++;
         alert("Life's a Struggle When You're a Muggle!")
 
@@ -125,6 +129,4 @@ document.onkeyup = function (event) {
     checkLetters(letterGuessed);
     roundComplete();
 }
-
-
 
